@@ -18,7 +18,7 @@ int main(void){
     }
     printf("\rFIRE!!\a\n");
     clock_t c=clock();
-    printf("クロック数は%ldです",(long)c);
+    printf("クロック数は%ldです\n",(long)c);
     printf("プログラム開始から%.lf秒経過しました\n",(double)c/CLOCKS_PER_SEC);
     return 0;
 }
