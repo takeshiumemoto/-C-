@@ -1,21 +1,12 @@
 #include <stdio.h>
+#include <unistd.h>  // sleep() 関数を使用するために必要
 
 int main() {
-    int num1, num2, num3;
-    int max;
-
-    printf("3つの整数を入力してください\n");
-    scanf("%d %d %d", &num1, &num2, &num3);
-
-    max = num1;
-
-    if (num2 > max) {
-        max = num2;
+    for (int i = 0; i <= 100; i++) {
+        printf("\rProgress: %d%%", i);
+        fflush(stdout); // すぐに画面に反映させる
+        sleep(1); // 1秒待機
     }
-    if (num3 > max) {
-        max = num3;
-    }
-
-    printf("最大値は%dです\n", max);
+    printf("\n"); // 最後に改行を追加
     return 0;
 }
