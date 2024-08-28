@@ -1,20 +1,38 @@
-#include <time.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-int sleep(unsigned long x){
-    clock_t c1 = clock(),c2;
+
+
+int main(int argc,char** argv){
+    srand(time(NULL));
+    int no;
+    int ans=rand()%1000;
+    int stage=10;
+
+    printf("0~999の整数を入力しよう：\n");
+clock_t start = clock();
     do{
-        if((c2=clock())==(clock_t)-1)
-            return 0;
-    } while(1000.0*(c2-c1)/CLOCKS_PER_SEC<x);
-    return 1;
-}
-int main(void){
-    printf("ABCEFG");
-    for(int i=0;i<7;i++){
-        sleep(1000);
-        printf("\b\b");
-        fflush(stdout);
+        printf("残り%d回、いくつかな",stage);
+        scanf("%d",&no);    
+        stage--;
+
+        if(no>ans){
+            printf("もっと小さいよ\n");
+        }
+        else if(no<ans){
+            printf("もっと大きいよ\n");
+        }
+    }while(no!=ans &&stage>0);
+
+    if(no!=ans){
+        printf("残念、正解は%dです",ans);   
+    }else{
+        printf("正解です\n");
+        printf("%d会で当たりました。",stage);
     }
+    clock_t end = clock();
+    double time_taken =(double)(end-start)/CLOCKS_PER_SEC;
+    printf("%2f\n",time_taken);
     return 0;
 }
